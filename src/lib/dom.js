@@ -7,9 +7,10 @@ const setAttr = (el, key, value) => el.setAttribute(key, value);
 
 const createCanvas = (size, ratio) => {
     const canvas = create('canvas');
-    setAttr(canvas, 'width', size * ratio);
+    const newwidth = size * 3;
+    setAttr(canvas, 'width', newwidth * ratio);
     setAttr(canvas, 'height', size * ratio);
-    canvas.style.width = `${size}px`;
+    canvas.style.width = `${newwidth}px`;
     canvas.style.height = `${size}px`;
     return canvas;
 };

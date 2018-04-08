@@ -1,6 +1,6 @@
 const drawLabel = (context, settings) => {
     const size = settings.size;
-    const font = 'bold ' + settings.mSize * 0.01 * size + 'px ' + settings.fontname;
+    const font = settings.mSize * 0.01 * size + 'px ' + settings.fontname;
 
     context.strokeStyle = settings.back;
     context.lineWidth = settings.mSize * 0.01 * size * 0.1;
