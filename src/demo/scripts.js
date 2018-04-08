@@ -4,6 +4,7 @@
     var FR = win.FileReader;
     var doc = win.document;
     var kjua = win.kjua;
+    var options = {};
 
     var guiValuePairs = [
         ['size', 'px'],
@@ -33,7 +34,54 @@
     }
 
     function onReady(fn) {
+        console.log('onReady');
         onEvent(doc, 'DOMContentLoaded', fn);
+
+        // Init defaults
+        options.items = [{
+            mode: 'label',
+
+            mSize: 20,
+            mPosX: 50,
+            mPosY: 50,
+
+            label: 'NANO',
+            fontname: 'Nunito',
+            fontcolor: '#000000'
+        },
+        {
+            mode: 'label',
+            mSize: 20,
+            mPosX: 250,
+            mPosY: 10,
+
+            label: 'NANO ACCEPTED HERE',
+            fontname: 'Nunito',
+            fontcolor: '#000000'
+        },
+        {
+            mode: 'label',
+
+            mSize: 10,
+            mPosX: 50,
+            mPosY: 50,
+
+            label: 'Pay with NANO',
+            fontname: 'Nunito',
+            fontcolor: '#eeeeee'
+        },
+        {
+            mode: 'label',
+
+            mSize: 20,
+            mPosX: 50,
+            mPosY: 50,
+
+            // label: 'NANO',
+            fontname: 'Nunito',
+            fontcolor: '#000000'
+        }
+        ];
     }
 
     function forEach(list, fn) {
@@ -57,20 +105,22 @@
     }
 
     function updateQrCode() {
-        var options = {
-            render: valById('render'),
-            crisp: valById('crisp') === 'true',
-            ecLevel: valById('eclevel'),
-            minVersion: intById('minversion'),
+        console.log('updateQrCode');
+        options.render = valById('render');
+        options.crisp = valById('crisp') === 'true';
+        options.ecLevel = valById('eclevel');
+        options.minVersion = intById('minversion');
 
-            fill: valById('fill'),
-            back: valById('back'),
+        options.fill = valById('fill');
+        options.back = valById('back');
 
-            text: valById('text'),
-            size: intById('size'),
-            rounded: intById('rounded'),
-            quiet: intById('quiet'),
+        options.text = valById('text');
+        options.size = intById('size');
+        options.rounded = intById('rounded');
+        options.quiet = intById('quiet');
 
+        if (!options.items) options.items = [];
+        options.items[valById('item')] = {
             mode: valById('mode'),
 
             mSize: intById('msize'),
@@ -83,7 +133,7 @@
 
             image: elById('img-buffer')
         };
-
+        // console.log('options :' + JSON.stringify(options));
         var container = elById('container');
         var qrcode = kjua(options);
         forEach(container.childNodes, function (child) {

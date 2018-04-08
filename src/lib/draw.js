@@ -39,32 +39,10 @@ const drawModules = (qr, context, settings) => {
     context.translate(-offset, -offset);
 };
 
-const drawText = (context, settings) => {
-    const size = settings.size;
-    const font = settings.mSize * 0.01 * size + 'px ' + settings.fontname;
-
-    context.strokeStyle = settings.back;
-    context.lineWidth = settings.mSize * 0.01 * size * 0.1;
-    context.fillStyle = settings.fontcolor;
-    context.font = font;
-
-    const w = context.measureText(settings.label).width;
-    const sh = settings.mSize * 0.01;
-    const sw = w / size;
-    const sl = (1 - sw) * settings.mPosX * 0.01;
-    const st = (1 - sh) * settings.mPosY * 0.01;
-    const x = size * 0.75 + sl * size;
-    const y = st * size + 0.75 * settings.mSize * 0.01 * size;
-
-    //context.strokeText(settings.label, x, y);
-    context.fillText('Hello world', x, y);
-};
-
 const draw = (qr, context, settings) => {
     drawBackground(context, settings);
     drawModules(qr, context, settings);
     drawMode(context, settings);
-    drawText(context, settings);
 };
 
 module.exports = draw;
