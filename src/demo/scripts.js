@@ -34,17 +34,14 @@
     }
 
     function onReady(fn) {
-        console.log('onReady');
         onEvent(doc, 'DOMContentLoaded', fn);
 
         // Init defaults
         options.items = [{
             mode: 'label',
-
             mSize: 20,
             mPosX: 50,
             mPosY: 50,
-
             label: 'NANO',
             fontname: 'Nunito',
             fontcolor: '#000000'
@@ -54,29 +51,24 @@
             mSize: 20,
             mPosX: 250,
             mPosY: 10,
-
             label: 'NANO ACCEPTED HERE',
             fontname: 'Nunito',
             fontcolor: '#000000'
         },
         {
             mode: 'label',
-
             mSize: 10,
             mPosX: 50,
             mPosY: 50,
-
             label: 'Pay with NANO',
             fontname: 'Nunito',
             fontcolor: '#eeeeee'
         },
         {
             mode: 'label',
-
             mSize: 20,
             mPosX: 50,
             mPosY: 50,
-
             // label: 'NANO',
             fontname: 'Nunito',
             fontcolor: '#000000'
@@ -105,7 +97,6 @@
     }
 
     function updateQrCode() {
-        console.log('updateQrCode');
         options.render = valById('render');
         options.crisp = valById('crisp') === 'true';
         options.ecLevel = valById('eclevel');
@@ -133,7 +124,6 @@
 
             image: elById('img-buffer')
         };
-        // console.log('options :' + JSON.stringify(options));
         var container = elById('container');
         var qrcode = kjua(options);
         forEach(container.childNodes, function (child) {
@@ -146,7 +136,9 @@
 
     function update() {
         updateGui();
-        updateQrCode();
+        setTimeout(function () {
+            updateQrCode();
+        }, 250);
     }
 
     function onImageInput() {
@@ -156,13 +148,26 @@
             reader.onload = function (ev) {
                 elById('img-buffer').setAttribute('src', ev.target.result);
                 elById('mode').value = 4;
-                setTimeout(update, 250);
+                setTimeout(update, 100);
             };
             reader.readAsDataURL(input.files[0]);
         }
     }
 
+    function onItemChanged() {
+        var item = valById('item');
+        elById('mode').value = options.items[item].mode;
+        elById('msize').value = options.items[item].mSize;
+        elById('mposx').value = options.items[item].mPosX;
+        elById('mposy').value = options.items[item].mPosY;
+        elById('label').value = options.items[item].label;
+        elById('font').value = options.items[item].fontname;
+        elById('fontcolor').value = options.items[item].fontcolor;
+        elById('img-buffer').value = options.items[item].image;
+    }
+
     onReady(function () {
+        onEvent(elById('item'), 'change', onItemChanged);
         onEvent(elById('image'), 'change', onImageInput);
         all('input, textarea, select', function (el) {
             onEvent(el, 'input', update);

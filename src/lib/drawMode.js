@@ -1,5 +1,4 @@
 const drawLabel = (context, settings, item) => {
-    // console.log('drawLabel settings : ' + JSON.stringify(settings));
     if (item.label) {
         const size = settings.size;
         const font = item.mSize * 0.01 * size + 'px ' + item.fontname;
@@ -39,10 +38,7 @@ const drawImage = (context, settings, item) => {
 };
 
 const drawMode = (context, settings) => {
-    // console.log('drawMode');
-    // console.log('settings : ' + JSON.stringify(settings));
     for (const item of settings.items) {
-        // console.log('item : ' + JSON.stringify(item));
         if (item.mode === 'label') {
             drawLabel(context, settings, item);
         } else if (item.mode === 'image') {
