@@ -63,7 +63,7 @@
             mPosY: 63,
             label: 'Pay with NANO',
             fontname: 'Nunito',
-            fontcolor: '#555555'
+            fontcolor: '#ee8a2e'
         },
         {
             mode: 'label',
