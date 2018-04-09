@@ -3,7 +3,7 @@ const drawMode = require('./drawMode');
 
 const drawBackground = (context, settings) => {
     context.fillStyle = settings.back;
-    context.fillRect(0, 0, settings.size * 3, settings.size);
+    context.fillRect(0, 0, settings.size * settings.width, settings.size);
 };
 
 const drawModuleDefault = (qr, context, settings, width, row, col) => {

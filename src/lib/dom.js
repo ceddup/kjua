@@ -5,9 +5,9 @@ const create = name => doc.createElement(name);
 const getAttr = (el, key) => el.getAttribute(key);
 const setAttr = (el, key, value) => el.setAttribute(key, value);
 
-const createCanvas = (size, ratio) => {
+const createCanvas = (size, ratio, width) => {
     const canvas = create('canvas');
-    const newwidth = size * 3;
+    const newwidth = size * width;
     setAttr(canvas, 'width', newwidth * ratio);
     setAttr(canvas, 'height', size * ratio);
     canvas.style.width = `${newwidth}px`;

@@ -8,6 +8,7 @@
 
     var guiValuePairs = [
         ['size', 'px'],
+        ['width', 'x'],
         ['minversion', ''],
         ['quiet', ' modules'],
         ['rounded', '%'],
@@ -40,7 +41,7 @@
         options.items = [{
             mode: 'label',
             mSize: 20,
-            mPosX: 50,
+            mPosX: 9,
             mPosY: 50,
             label: 'NANO',
             fontname: 'Nunito',
@@ -48,8 +49,8 @@
         },
         {
             mode: 'label',
-            mSize: 20,
-            mPosX: 250,
+            mSize: 14,
+            mPosX: 73,
             mPosY: 10,
             label: 'NANO ACCEPTED HERE',
             fontname: 'Nunito',
@@ -58,11 +59,11 @@
         {
             mode: 'label',
             mSize: 10,
-            mPosX: 50,
+            mPosX: 100,
             mPosY: 50,
             label: 'Pay with NANO',
             fontname: 'Nunito',
-            fontcolor: '#eeeeee'
+            fontcolor: '#555555'
         },
         {
             mode: 'label',
@@ -107,6 +108,7 @@
 
         options.text = valById('text');
         options.size = intById('size');
+        options.width = intById('width');
         options.rounded = intById('rounded');
         options.quiet = intById('quiet');
 

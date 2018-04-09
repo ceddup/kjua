@@ -10,8 +10,8 @@ const drawLabel = (context, settings, item) => {
 
         const w = context.measureText(item.label).width;
         const sh = item.mSize * 0.01;
-        const sw = w / size;
-        const sl = (1 - sw) * item.mPosX * 0.01;
+        const sw = w / (settings.width * size);
+        const sl = (1 - sw) * (item.mPosX * settings.width) * 0.01;
         const st = (1 - sh) * item.mPosY * 0.01;
         const x = sl * size;
         const y = st * size + 0.75 * item.mSize * 0.01 * size;
@@ -29,7 +29,7 @@ const drawImage = (context, settings, item) => {
     const sw = sh * w / h;
     const sl = (1 - sw) * item.mPosX * 0.01;
     const st = (1 - sh) * item.mPosY * 0.01;
-    const x = sl * size;
+    const x = sl * size * settings.width;
     const y = st * size;
     const iw = sw * size;
     const ih = sh * size;
