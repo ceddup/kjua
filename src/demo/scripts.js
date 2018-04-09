@@ -50,8 +50,8 @@
         {
             mode: 'label',
             mSize: 14,
-            mPosX: 73,
-            mPosY: 10,
+            mPosX: 74,
+            mPosY: 47,
             label: 'NANO ACCEPTED HERE',
             fontname: 'Nunito',
             fontcolor: '#000000'
@@ -59,8 +59,8 @@
         {
             mode: 'label',
             mSize: 10,
-            mPosX: 100,
-            mPosY: 50,
+            mPosX: 84,
+            mPosY: 63,
             label: 'Pay with NANO',
             fontname: 'Nunito',
             fontcolor: '#555555'
